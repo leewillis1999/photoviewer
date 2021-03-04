@@ -1,0 +1,9 @@
+spring:
+  profiles: dev
+  datasource:
+    url: jdbc:h2:file:E:\Development\git\projects\photo-viewer\etc\db\photos
+
+#photo.folder=E:\\Dropbox\\Photos\\Wallpaper
+photo:
+  folder: N:\ByYear\
+  deleted: N:\deleted\

@@ -1,0 +1,70 @@
+<div class="image-container">
+    <div class="loading fa-spin"
+         *ngIf="loading">
+        <i class="fas fa-spinner"></i>
+    </div>
+    <div class="current-image-container "
+         [ngClass]="{'current-image-container-loading': loading}">
+        <div class="likes">
+            <i *ngFor="let l of likeArray(currentImage.likes)"
+               class="fas fa-heart"></i>
+        </div>
+
+        <label class="count">{{currentImage.count}}</label>
+
+        <img height="200"
+             class="current-image"
+             src="data:image/gif;base64,{{currentImage.imageAsB64}}">
+        <label class="filedate">{{currentImage.label}}</label>
+        <label class="filename">{{currentImage.fullFileName}}</label>
+
+    </div>
+
+</div>
+
+<div class="button-grid">
+    <button mat-raised-button
+            [disabled]="loading"
+            color="primary"
+            (click)="onClickPrev()">
+        <i class="fas fa-step-backward"></i>
+    </button>
+
+    <button mat-raised-button
+            [disabled]="loading"
+            color="primary"
+            (click)="onClickPlay()">
+        <i *ngIf="playing"
+           class="fas fa-play"></i>
+        <i *ngIf="!playing"
+           class="fas fa-pause"></i>
+    </button>
+
+    <button mat-raised-button
+            [disabled]="loading"
+            color="primary"
+            (click)="onClickNext()">
+        <i class="fas fa-step-forward"></i>
+    </button>
+
+    <button mat-raised-button
+            [disabled]="loading"
+            color="primary"
+            (click)="onClickLike()">
+        <i class="fas fa-thumbs-up"></i>
+    </button>
+
+    <button mat-raised-button
+            [disabled]="loading"
+            color="accent"
+            (click)="onClickUnlike()">
+        <i class="fas fa-thumbs-down"></i>
+    </button>
+
+    <button mat-raised-button
+            [disabled]="loading"
+            color="warn"
+            (click)="onClickDelete()">
+        <i class="fas fa-trash"></i>
+    </button>
+</div>

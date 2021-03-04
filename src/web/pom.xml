@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.3.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+    <groupId>com.willissoftware</groupId>
+    <artifactId>photo-viewer-parent</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <name>photo-viewer-parent</name>
+    <description>Photo viewer - Parent POM</description>
+	<packaging>pom</packaging>
+
+	<modules>
+		<module>photo-viewer</module>
+		<module>photo-viewer-ui</module>
+	</modules>
+
+    <properties>
+        <java.version>11</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+		
+        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+        <maven-clean-plugin.version>3.1.0</maven-clean-plugin.version>
+        <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
+        <versions-maven-plugin.version>2.7</versions-maven-plugin.version>		
+		
+        <commons-collections4.version>4.2</commons-collections4.version>
+        <commons-io.version>2.6</commons-io.version>
+        <commons-codec.version>1.11</commons-codec.version>
+        <commons-lang3.version>3.8.1</commons-lang3.version>	
+
+        <frontend-maven-plugin.version>1.10.0</frontend-maven-plugin.version>
+        <node.version>v14.15.4</node.version>
+        <npm.version>6.14.10</npm.version>
+        <h2.version>1.4.197</h2.version>
+        <javaxt-core.version>1.7.8</javaxt-core.version>
+		<metadata-extractor.version>2.12.0</metadata-extractor.version>
+
+    </properties>
+
+    <repositories>
+        <repository>
+            <id>javaxt.com</id>
+            <url>http://www.javaxt.com/maven</url>
+        </repository>
+    </repositories>
+
+	<dependencyManagement>
+		<dependencies>
+
+            <dependency>
+                <groupId>com.h2database</groupId>
+                <artifactId>h2</artifactId>
+                <version>${h2.version}</version>
+            </dependency>
+
+            <!--
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+            </dependency>
+            -->
+
+            <!--  Various collection utils -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-lang3.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-collections4</artifactId>
+                <version>${commons-collections4.version}</version>
+            </dependency>
+
+            <!-- E.g. FileUtils, IOUtils -->
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons-io.version}</version>
+            </dependency>
+
+            <!-- E.g. Base64 Encoding/Decoding -->
+            <dependency>
+                <groupId>commons-codec</groupId>
+                <artifactId>commons-codec</artifactId>
+                <version>${commons-codec.version}</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/javaxt/javaxt-core -->
+            <dependency>
+                <groupId>javaxt</groupId>
+                <artifactId>javaxt-core</artifactId>
+                <version>${javaxt-core.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.drewnoakes</groupId>
+                <artifactId>metadata-extractor</artifactId>
+                <version>${metadata-extractor.version}</version>
+            </dependency>
+
+
+		</dependencies>
+	</dependencyManagement>
+	
+
+	<build>
+		<pluginManagement>
+			<plugins>
+                <!--
+				<plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven-compiler-plugin.version}</version>
+                    <configuration>
+                        <source>${java.version}</source>
+                        <target>${java.version}</target>
+                    </configuration>				
+				</plugin>
+				-->
+
+                <!--
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>versions-maven-plugin</artifactId>
+                    <version>${versions-maven-plugin.version}</version>
+                </plugin>
+                -->
+
+                <!--
+                <plugin>
+                    <groupId>pl.project13.maven</groupId>
+                    <artifactId>git-commit-id-plugin</artifactId>
+                    <version>${git-commit-id-plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <id>get-the-git-infos</id>
+                            <goals>
+                                <goal>revision</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+
+                    <configuration>
+                        <dotGitDirectory>${project.basedir}/.git</dotGitDirectory>
+                        <prefix>git</prefix>
+                        <injectAllReactorProjects>true</injectAllReactorProjects>
+                        <verbose>true</verbose>
+                        <generateGitPropertiesFile>true</generateGitPropertiesFile>
+                        <generateGitPropertiesFilename>${project.build.outputDirectory}/git.properties
+                        </generateGitPropertiesFilename>
+                        <format>json</format>
+                        <gitDescribe>
+                            <skip>false</skip>
+                            <always>false</always>
+                            <dirty>-dirty</dirty>
+                        </gitDescribe>
+                    </configuration>
+
+                </plugin>
+                -->
+
+               <!--Manages Build and transfer for the Node based UI-->
+                <plugin>
+
+                    <groupId>com.github.eirslett</groupId>
+                    <artifactId>frontend-maven-plugin</artifactId>
+                    <version>${frontend-maven-plugin.version}</version>
+
+                    <configuration>
+                        <nodeVersion>${node.version}</nodeVersion>
+                        <npmVersion>${npm.version}</npmVersion>
+                        <workingDirectory/>
+                    </configuration>
+
+                    <executions>
+                        <execution>
+                            <id>install node and npm</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>install-node-and-npm</goal>
+                            </goals>
+                        </execution>
+
+                        <execution>
+                            <id>npm install</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>npm</goal>
+                            </goals>
+                        </execution>
+
+                        <execution>
+                            <id>npm run build</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>npm</goal>
+                            </goals>
+                            <configuration>
+                                <!-- this is defined in package.json -->
+                                <arguments>run prod</arguments>
+                            </configuration>
+                        </execution>
+                    </executions>
+
+                </plugin>				
+			</plugins>
+		</pluginManagement>
+	</build>
+
+	
+</project>

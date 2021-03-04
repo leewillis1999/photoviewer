@@ -1,0 +1,17 @@
+FROM	openjdk:11
+
+ARG VERSION
+ARG APPLICATION
+#ARG REPO
+
+ENV JAR ./$APPLICATION-$VERSION.jar
+
+RUN echo "Building $APPLICATION version:$VERSION"
+
+WORKDIR	/app
+
+COPY $JAR /app
+
+EXPOSE	8080
+
+CMD		java -jar $JAR --spring.profiles.active=prod

@@ -1,0 +1,8 @@
+spring:
+  profiles: prod
+  datasource:
+    url: jdbc:h2:file:/media/nasphotos/ByYear/photos
+
+photo:
+  folder: /media/nasphotos/ByYear/
+  deleted: /media/nasphotos/deleted/

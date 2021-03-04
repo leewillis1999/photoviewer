@@ -1,0 +1,23 @@
+<div class="app-shell">
+    <div class="app-content">
+        <header class="app-toolbar">
+            <button mat-icon-button
+                    color="accent"
+                    routerLink="remote">
+                <i class="fas fa-wifi"></i>
+            </button>
+
+            <button mat-icon-button
+                    color="accent"
+                    routerLink="settings">
+                <i class="fas fa-tools"></i>
+            </button>
+        </header>
+
+        <main class="app-container">
+
+            <router-outlet></router-outlet>
+
+        </main>
+    </div>
+</div>

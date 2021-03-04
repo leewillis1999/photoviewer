@@ -1,0 +1,7 @@
+# default profile - always loaded
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+

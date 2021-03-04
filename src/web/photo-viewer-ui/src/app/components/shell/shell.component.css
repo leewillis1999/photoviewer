@@ -1,0 +1,31 @@
+.app-shell{
+}
+
+.app-content button{
+    font-size:140%;
+    margin:0px 20px;
+}
+
+.app-content{
+    width:100vw;
+    max-width:600px;
+    height:100vh;
+    max-height: 800px;
+    margin:0px auto;
+    display: grid;
+    grid-template-rows: auto 1fr;
+}
+
+.app-toolbar{
+    height:50px;
+    display:flex;
+    align-items: center;
+    background-color: slateblue;
+}
+
+
+.app-container{
+    padding:15px;
+    border:1px solid #ccc;
+    background-color: rgba(225,225,225);
+}
